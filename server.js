@@ -58,6 +58,6 @@ export function createServer() {
   });
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
-  const port=Number(process.env.PORT||3000);
+  const port=Number(process.env.PORT||7700);
   createServer().listen(port,'127.0.0.1',()=>console.log(`InstaSave: http://localhost:${port}`));
 }
