@@ -1,0 +1,27 @@
+
+.font-copy{border:1.5px solid #111;border-radius:6px;background:#eee7ff;padding:11px 14px;font-size:12px;font-weight:800;align-self:flex-start;min-height:44px}
+.font-card:nth-child(4n+2) .font-copy{background:#ffdf27}.font-card:nth-child(4n+3) .font-copy{background:#ffd9e6}.font-card:nth-child(4n) .font-copy{background:#d1ed9e}
+#font-manual{margin-bottom:24px}#font-manual label{display:block;margin-bottom:10px;font-size:13px}
+@media(max-width:540px){.tool-tabs{gap:10px;margin-bottom:28px}.tool-tabs button{flex:1;padding:11px 6px;font-size:12px}.font-hero h2{font-size:clamp(34px,9vw,48px);letter-spacing:-2px}.font-hero p{font-size:13px}.font-grid{grid-template-columns:1fr}.font-list-head span{display:none}.font-input-foot{flex-wrap:wrap}.font-card{padding:18px}}
+
+.font-filters{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 16px}.font-filters button{border:1.5px solid #111;border-radius:7px;padding:10px 12px;min-height:44px;background:white;font:inherit;font-size:12px;font-weight:700;box-shadow:2px 3px #111}.font-filters button[aria-pressed="true"]{background:#c4afff}
+
+/* 상단 ChatGPT 바로가기 */
+.brand-row{gap:18px;flex-wrap:wrap}
+.header-actions{display:flex;align-items:center;gap:20px}
+.chatgpt-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:9px 13px;border:2px solid #111;border-radius:11px;background:#d1ed9e;color:#111;text-decoration:none;font-size:13px;font-weight:800;white-space:nowrap;box-shadow:2px 3px #111;transition:transform .18s,box-shadow .18s,background .18s}
+.chatgpt-spark{font-size:20px;line-height:1}.chatgpt-arrow{font-size:18px;transition:transform .18s}
+.chatgpt-link:hover{transform:translate(-3px,-4px);box-shadow:5px 7px #111;background:#c2ef8a}
+.chatgpt-link:hover .chatgpt-arrow{transform:translate(2px,-2px)}
+.chatgpt-link:active{transform:translate(2px,2px);box-shadow:0 1px #111}
+@media(max-width:650px){.header-actions{gap:12px}.header-actions .reset>span{display:none}}
+@media(max-width:440px){.brand-row{row-gap:20px}.header-actions{width:100%;justify-content:space-between}.chatgpt-link{padding:9px 14px}}
+
+/* 글꼴 입력창 위 ChatGPT 대화 바로가기 */
+.font-chatgpt-shortcut{margin:26px 0 28px}
+.font-chatgpt-link{background:#c4afff;white-space:normal;text-align:center;line-height:1.6;padding:12px 16px}
+.font-chatgpt-link:hover{background:#b79bff}
+.font-chatgpt-link:focus-visible{outline:3px solid #805cff;outline-offset:5px}
+.font-chatgpt-shortcut p{font-size:12px;line-height:1.8;color:#625b72;margin:12px 0 0}
+@media(max-width:540px){.font-chatgpt-link{width:100%}}
+@media(prefers-reduced-motion:reduce){.font-chatgpt-link,.font-chatgpt-link .chatgpt-arrow{transition:none}}
