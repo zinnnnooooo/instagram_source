@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InstaSave — Instagram Media Tool</title>
+  <meta name="description" content="Instagram 공개 사진과 릴스를 링크 하나로 저장하세요.">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js"></script>
+  <script type="module" src="./fonts-ui.js"></script>
+</head>
+
+<body>
+  <main class="page">
+    <div class="masthead">
+      <div class="edition"><i></i> A LITTLE LINK. A LOT TO KEEP.</div><span>INDEPENDENT TOOL ↗</span>
+    </div>
+    <div class="workspace">
+      <div aria-hidden="true">
+        <div class="shape circle"></div>
+        <div class="shape square"></div>
+        <div class="shape diamond"></div>
+        <div class="shape pink"></div>
+        <div class="shape polygon"></div>
+        <div class="shape cross">+</div>
+        <div class="shape dot"></div>
+        <div class="shape dots">•••</div>
+      </div>
+      <section class="main-card" aria-label="Instagram 사진·릴스 추출기">
+        <header class="brand-row">
+          <div class="brand">
+            <div class="brand-icon"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.4">
+                <path d="M14.5 4h-5L7 7H3a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-4z" />
+                <circle cx="12" cy="13" r="4" />
+              </svg></div>InstaSave
+          </div>
+          <div class="header-actions">
+            <a class="chatgpt-link" href="https://chatgpt.com/ko-KR/" target="_blank" rel="noopener noreferrer" aria-label="ChatGPT 열기 (새 탭)">
+              <span class="chatgpt-spark" aria-hidden="true">✳</span><span>ChatGPT</span><span class="chatgpt-arrow" aria-hidden="true">↗</span>
+            </a>
+            <div class="reset"><span>START FRESH</span><button id="reset" class="icon-button" title="초기화"
+                aria-label="입력과 결과 초기화">↶</button></div>
+          </div>
+        </header>
+        <div class="tool-tabs" role="tablist" aria-label="도구 선택">
+          <button type="button" id="media-tab" role="tab" aria-selected="true" aria-controls="media-panel">미디어 다운로드</button>
+          <button type="button" id="fonts-tab" role="tab" aria-selected="false" aria-controls="fonts-panel" tabindex="-1">Aa 글꼴 변환</button>
+        </div>
+        <div id="media-panel" role="tabpanel" aria-labelledby="media-tab">
+        <div class="hero">
+          <span class="badge">✳ INSTAGRAM MEDIA TOOL</span>
+          <h1><span class="hero-line line1">YOUR <span class="highlight-word">LINK.</span></span><br><span
+              class="hero-line line2">YOUR <span class="highlight-word">MEDIA.</span></span></h1>
+          <p>마음에 든 순간, 한 장도 놓치지 마세요.<br>사진부터 릴스까지, 링크 하나로 간편하게 저장하세요.</p>
+          <div class="sticker" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17 17 7M7 7h10v10" />
+            </svg><span>LINK. SAVE. KEEP.</span></div>
+        </div>
+        <form id="url-form" class="url-form">
+          <div class="input-wrap"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.2" aria-hidden="true">
+              <path d="m10 13 4-4m-6 7-1 1a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m2 1 1-1a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0" />
+            </svg>
+            <label class="sr-only" for="url">Instagram 게시물 URL</label>
+            <input id="url" type="text" inputmode="url" autocomplete="off" spellcheck="false"
+              placeholder="Instagram 게시물·릴스 링크를 붙여넣어 주세요" aria-describedby="url-help">
+            <button id="paste" type="button" class="paste" title="링크 붙여넣기" aria-label="클립보드에서 링크 붙여넣기"><svg width="21"
+                height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="5" y="5" width="14" height="16" rx="2" />
+                <rect x="9" y="2" width="6" height="5" rx="1" fill="white" />
+              </svg></button>
+          </div>
+          <button id="extract" class="extract" type="submit" disabled aria-label="사진·영상 추출"><svg width="28" height="28"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M12 5v14M5 12h14" />
+            </svg><span>EXTRACT</span></button>
+        </form>
+        <div class="form-help" id="url-help"><span>▧ 공개 사진 · 릴스 · 캐러셀 지원</span><span><span class="keyboard">↵</span>
+            Enter to extract</span></div>
+        <div aria-live="polite">
+          <div id="loading" class="loading" role="status" hidden>
+            <div class="loading-title">ANALYZING POST...</div>
+            <div class="loader-track"><span data-slot="progress-indicator"></span></div>
+            <p>게시물 속 사진과 영상을 확인하고 있어요. 잠시만 기다려 주세요.</p>
+          </div>
+          <div id="error" class="error-card" role="alert" hidden><span aria-hidden="true">⚠</span>
+            <div>
+              <h2 id="error-title"></h2>
+              <p id="error-message"></p><button id="retry" class="retry">TRY AGAIN ↗</button>
+            </div>
+          </div>
+        </div>
+        <section id="results" class="results" hidden>
+          <div class="result-header">
+            <div><span class="badge success">✓ POST FOUND</span>
+              <h2 id="result-count"></h2>
+            </div><button id="download-all" class="all-download">↓ DOWNLOAD ALL <small>ZIP</small></button>
+          </div>
+          <div id="media-grid" class="media-grid"></div>
+          <p id="media-count" class="notice"></p>
+          <p class="result-note">게시물 순서대로 정리했어요. 전체 다운로드는 하나의 ZIP 파일로 저장됩니다.<br>미디어 링크가 만료되면 게시물을 다시 분석해 주세요.</p>
+        </section>
+        <div id="resting" class="resting">
+          <div class="step"><b>01</b> 링크 붙여넣기</div><span class="step-arrow">→</span>
+          <div class="step"><b>02</b> 미디어 확인하기</div><span class="step-arrow">→</span>
+          <div class="step"><b>03</b> 내 기기에 저장</div>
+        </div>
+        </div>
+        <section id="fonts-panel" role="tabpanel" aria-labelledby="fonts-tab" hidden>
+          <div class="font-hero"><span class="badge">✳ INSTAGRAM FONT TOOL</span>
+            <h2>YOUR WORDS.<br>YOUR <mark>STYLE.</mark></h2>
+            <p>평범한 문구에 나만의 스타일을.<br>입력하고, 마음에 드는 글씨를 복사하세요.</p>
+          </div>
+          <div class="font-chatgpt-shortcut">
+            <a class="chatgpt-link font-chatgpt-link" href="https://chatgpt.com/g/g-p-6a8408aab5488191849e294987ce0204/c/6a8cfcab-3e98-83ee-bf6b-de098ea89d8b" target="_blank" rel="noopener noreferrer" aria-label="ChatGPT에서 감성 문구 만들기 (새 탭)"><span class="chatgpt-spark" aria-hidden="true">✳</span> ChatGPT에서 감성 문구 만들기 <span class="chatgpt-arrow" aria-hidden="true">↗</span></a>
+            <p>ChatGPT에서 만든 문구를 복사해 아래에 붙여넣어 주세요.</p>
+          </div>
+          <div class="font-input-head"><label for="font-input">변환할 문구</label><span id="font-length">0자</span></div>
+          <textarea id="font-input" rows="3" maxlength="500" placeholder="예: Football Inside" aria-describedby="font-help"></textarea>
+          <div class="font-input-foot"><p id="font-help">문자 변환은 영문·숫자 중심 · 프레임은 한글에도 적용됩니다.</p><button id="font-clear" type="button">입력 지우기 ↶</button></div>
+          <div class="font-list-head"><h3 id="font-style-count">72 STYLES</h3><span>TYPE. COPY. POST.</span></div>
+          <div class="font-filters" role="group" aria-label="글꼴 종류">
+            <button type="button" data-font-category="all" aria-pressed="true">전체 72</button>
+            <button type="button" data-font-category="letter" aria-pressed="false">문자 스타일 36</button>
+            <button type="button" data-font-category="mark" aria-pressed="false">선·기호 장식 12</button>
+            <button type="button" data-font-category="frame" aria-pressed="false">문구 프레임 24</button>
+          </div>
+          <p id="font-example-note">아래는 미리보기 예시입니다. 문구를 입력하면 복사할 수 있어요.</p>
+          <p id="font-status" role="status" aria-live="polite"></p>
+          <div id="font-manual" hidden><label for="font-manual-text">직접 복사</label><textarea id="font-manual-text" readonly rows="3"></textarea></div>
+          <div id="font-grid" class="font-grid"></div>
+          <p class="result-note">복사 가능한 특수문자로 변환합니다. 스타일에 따라 숫자는 원문으로 표시됩니다.<br>기기와 앱에 따라 글자 모양이나 지원 여부가 달라질 수 있습니다.</p>
+        </section>
+      </section>
+    </div>
+    <footer class="footer"><span>MADE FOR YOUR SAVED MOMENTS. ✳</span><span>저장 권한이 있는 미디어만 이용해 주세요. Instagram과 무관한
+        서비스입니다.</span></footer>
+  </main>
+  <div id="toast" class="toast-box" role="status" hidden></div>
+</body>
+
+</html>
