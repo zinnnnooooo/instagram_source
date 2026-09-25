@@ -1,0 +1,164 @@
+
+.hero:hover .highlight-word:after,
+.hero h1:hover .highlight-word:after {
+  transform: rotate(-0.5deg) scaleX(1.12) translateX(4px);
+}
+
+.badge {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  cursor: default;
+}
+.badge:hover {
+  transform: translateY(-4px) rotate(-2deg) scale(1.05);
+  box-shadow: 5px 5px 0 #111;
+}
+
+.sticker {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+.sticker:hover {
+  transform: rotate(20deg) translateY(-8px) scale(1.08);
+  box-shadow: 8px 9px 0 #111;
+}
+
+.url-form {
+  perspective: 800px;
+}
+.input-wrap {
+  transform-style: preserve-3d;
+  transition: box-shadow 0.18s ease, transform 0.18s ease-out;
+}
+@media (hover: hover) and (pointer: fine) {
+  .input-wrap:hover {
+    box-shadow: 8px 9px 0 #111;
+  }
+}
+
+.paste {
+  border: 1.5px solid transparent;
+  padding: 7px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border-radius: 8px;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease-out, background-color 0.15s ease-out, border-color 0.15s ease-out;
+}
+.paste:not(:disabled):hover {
+  background: #eee9ff;
+  border-color: #111;
+  box-shadow: 3px 3px 0 #111;
+  transform: translate(-3px, -3px) scale(1.04);
+}
+.paste:not(:disabled):active {
+  transform: translate(2px, 2px) scale(0.97);
+  box-shadow: 0 0 0 #111;
+}
+
+.extract {
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease-out, background-color 0.15s ease-out;
+}
+.extract:not(:disabled):hover {
+  transform: translate(-5px, -5px) scale(1.04);
+  box-shadow: 4px 4px 0 #111;
+}
+.extract:not(:disabled):active {
+  transform: translate(3px, 3px) scale(0.97);
+  box-shadow: 2px 2px 0 #111;
+}
+
+.step {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
+}
+.step b {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+.step:hover {
+  transform: translateY(-6px) rotate(-1deg) scale(1.025);
+}
+.step:hover b {
+  transform: scale(1.15) rotate(6deg);
+  box-shadow: 3px 4px 0 #111;
+}
+
+.all-download {
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease-out, background-color 0.15s ease-out;
+}
+.all-download:not(:disabled):hover {
+  transform: translate(-5px, -5px) scale(1.04);
+  box-shadow: 4px 4px 0 #111;
+}
+.all-download:not(:disabled):active {
+  transform: translate(3px, 3px) scale(0.97);
+  box-shadow: 1px 2px 0 #111;
+}
+
+.retry {
+  box-shadow: 2px 3px 0 #111;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease-out;
+}
+.retry:not(:disabled):hover {
+  transform: translate(-4px, -4px) scale(1.04);
+  box-shadow: 3px 3px 0 #111;
+}
+.retry:not(:disabled):active {
+  transform: translate(2px, 2px) scale(0.97);
+  box-shadow: 1px 1px 0 #111;
+}
+
+.media-card {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
+  transform-style: preserve-3d;
+}
+@media (hover: hover) and (pointer: fine) {
+  .media-card:hover {
+    transform: translateY(-8px) scale(1.025);
+    box-shadow: 7px 9px 0 #111;
+  }
+  .media-card:hover .image-frame img,
+  .media-card:hover .image-frame video {
+    transform: scale(1.025);
+  }
+}
+.image-frame img, .image-frame video {
+  transition: transform 0.3s ease;
+}
+
+.download-button {
+  box-shadow: 2px 3px 0 #111;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease-out, background-color 0.15s ease-out;
+}
+.download-button:not(:disabled):hover {
+  transform: translate(-3.5px, -3.5px) scale(1.03);
+  box-shadow: 3px 3px 0 #111;
+  background: #ffe642;
+}
+.download-button:not(:disabled):active {
+  transform: translate(2px, 2px) scale(0.97);
+  box-shadow: 1px 1px 0 #111;
+}
+
+/* Decorative Objects & Parallax Combination */
+.shape {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, letter-spacing 0.25s ease;
+}
+
+/* Pink Object - scale + rotation + lift */
+.circle {
+  width: 190px; height: 190px; border: 2px solid #111; background: #ff6ca6; border-radius: 50%; top: 125px; left: -68px;
+  animation: float 8s ease-in-out infinite;
+  transform: translate3d(var(--px, 0px), var(--py, 0px), 0);
+}
+.circle:hover {
+  transform: translate3d(var(--px, 0px), calc(var(--py, 0px) - 10px), 0) rotate(12deg) scale(1.1);
+  box-shadow: 8px 8px 0 #111;
+}
